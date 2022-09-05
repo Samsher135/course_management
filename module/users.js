@@ -79,6 +79,13 @@ class Users {
         return await global.mysql.query(strQuery, escape_data);
     }
 
+    async get_topics(course_id) {
+        let mysql = {};
+        let escape_data = [course_id];
+        let strQuery = await mysqliClass.mysqli(mysql, 'get_topics');
+        return await global.mysql.query(strQuery, escape_data);
+    }
+
     async approveCourse(req) {
         let mysql = {};
         let escape_data = [req.body.approval_status, req.body.course_id];

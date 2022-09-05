@@ -33,12 +33,13 @@ mysqliq['create_topic'] = "INSERT INTO `course_topics` (`course_id`, `topic_name
 mysqliq['insert_topic'] = "INSERT INTO `course_topics` (`course_id`, `topic_name`, `video_url`, `pdf_url`, `quizzes_url`) VALUES (?, ?, ?, ?, ?)";
 mysqliq['update_topic'] = "UPDATE `course_topics` SET `topic_name` = ?, `video_url` = ?, `pdf_url` = ?, `quizzes_url` = ? WHERE `topic_id` = ?";
 mysqliq['delete_topic'] = "DELETE FROM `course_topics` WHERE `topic_id` = ?";
+mysqliq['get_topics'] = "SELECT * FROM `course_topics` WHERE `course_id` = ?";
 
 //super admin queries
 mysqliq['approve_course'] = "UPDATE `courses` SET `approval_status` = ? WHERE `course_id` = ?";
 
 //Employee queries
-mysqliq['approved_courses'] = "SELECT * FROM courses INNER JOIN course_topics ON courses.course_id = course_topics.course_id WHERE courses.approval_status = 'approved' ORDER BY category";
+mysqliq['approved_courses'] = "SELECT * FROM courses WHERE courses.approval_status = 'approved' ORDER BY category";
 mysqliq['play_topic'] = "INSERT INTO `course_progress` (`topic_id`, `Employee_id`) VALUES (?, ?)";
 mysqliq['update_course_progress'] = "UPDATE `course_progress` SET `topic_status` = ?, `course_status` = ? WHERE `topic_id` = ? AND `Employee_id` = ?";
 mysqliq['increment_reward_points'] = "UPDATE `userdb` SET `reward_points` = `reward_points` + 1 WHERE `user_id` = ?";

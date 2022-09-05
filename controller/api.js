@@ -242,6 +242,11 @@ module.exports = {
     approved_courses: async (req, res) => {
         try {
             let [results] = await Promise.all([users.approvedCourses(req)])
+            for(let i = 0; i < results.length; i++){
+                let [topics] = await Promise.all([users.get_topics(results[i].course_id)])
+                //push topics to results
+                results[i].topics = topics;
+            }
             jsonResponse(res, "sucess", results);
         } catch (error) {
             console.log(error);
