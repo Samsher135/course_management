@@ -10,7 +10,7 @@ module.exports = {
         try {
             const token = req.cookies.token;
             if (!token) {
-                jsonResponse(res, "error", "Access Denied");
+                jsonResponse(res, "error", "Please Login");
                 return;
             }
             const verified = jwt.verify(token, process.env.JWT_SECRET);
